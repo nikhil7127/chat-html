@@ -1,0 +1,93 @@
+{% extends "baseLR.html"%}
+{%block title%}
+login
+{%endblock%}
+{%block content%}
+<div class="container">
+    <center>
+        <br>
+        <br>
+        <div class="fs-3 fw-bold">Welcome Back</div>
+        <br>
+    </center>
+    <form method="post">
+        <div class="form-group">
+            <label for="username"
+                   style="padding-bottom:5px;font-size:13px;font-weight:600;padding-left:15%">Username</label>
+            <center><input type="text" name="username" id="username" required></center>
+        </div>
+        <div style="margin:10px"></div>
+        <div class="form-group">
+            <label for="password"
+                   style="padding-bottom:5px;font-size:13px;font-weight:600;padding-left:15%">Password</label>
+            <center><input type="password" name="password" id="password" required></center>
+        </div>
+        <br>
+        <center>
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-6">
+                    <a href="#" class="text-decoration-underline">
+                        <div style="font-size:13px;padding:0px;margin:0px">forgotten password?</div>
+                    </a>
+                </div>
+            </div>
+        </center>
+        <br>
+        <center>
+            <button type="submit" disabled id="btnDisable" style="width:70%;background-color:#585898;padding:8px 2px;border-radius:5px">
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4 fst-normal fst-italic" style="color:white;font-size:14px">
+                        Login
+                    </div>
+                    <div class="col-4" style="color:white;font-size:15px">
+                        &#8594
+                    </div>
+                </div>
+            </button>
+        </center>
+    </form>
+    <br>
+    <center>
+        <div style="font-size:13px;color:#c1c1c1">
+            don't have an account yet? <a href="/register" target="_blank">Sign Up</a>
+        </div>
+    </center>
+</div>
+<script>
+   const password = document.getElementById("password");
+   const username = document.getElementById("username");
+   username.addEventListener("keyup",colorChange);
+   password.addEventListener("keyup",colorChange);
+
+function colorChange()
+{
+ if ( password.value.length>7 && username.value.length>5)
+   {
+      document.getElementById('btnDisable').disabled = false;
+      document.getElementById('btnDisable').style.backgroundColor = "#090963";
+      console.log(document.getElementById('btnDisable').style.backgroundColor);
+   }
+   else
+   {
+      document.getElementById('btnDisable').disabled = true;
+      document.getElementById('btnDisable').style.backgroundColor = "#585898";
+      console.log(document.getElementById('btnDisable').style.backgroundColor);
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+{%endblock%}

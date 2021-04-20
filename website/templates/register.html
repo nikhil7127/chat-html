@@ -1,0 +1,135 @@
+{% extends "baseLR.html"%}
+{%block title%}
+Register
+{%endblock%}
+{%block content%}
+<style>
+    input
+    {
+    width:80%;
+    }
+
+
+
+
+
+
+
+</style>
+<div class="container">
+    <br>
+    <div class="fs-3 fw-bold">Register</div>
+    <div style="margin:10px"></div>
+    <form method="post">
+        <label for="username" style="padding-bottom:5px;font-size:13px;font-weight:600">Username</label>
+        <input type="text" name="username" id="username" style="width:90%" required>
+        <div style="margin:10px"></div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="phone" style="padding-bottom:5px;font-size:13px;font-weight:600">Phone number</label>
+                    <input type="text" name="phone_number" pattern="[6-9]{1}[0-9]{9}" id="phone" required>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="mail" style="padding-bottom:5px;font-size:13px;font-weight:600">Email</label>
+                    <input type="email" name="email" id="mail" required>
+                </div>
+            </div>
+        </div>
+        <div style="margin:10px"></div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="password" style="padding-bottom:5px;font-size:13px;font-weight:600">Password</label>
+                    <input type="password" name="password" id="password" required
+                           pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,20}"
+                           title="Must contain at least one number,one symbol,one uppercase and lowercase letter,at least 8 or more characters"
+
+                    >
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="confirm" style="padding-bottom:5px;font-size:13px;font-weight:600">Confirm
+                        password</label>
+                    <input type="password" name="confirm" id="confirm" required
+                           pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,20}"
+                           title="match with password"
+
+                    >
+                </div>
+            </div>
+        </div>
+        <br>
+        <center>
+            <button type="submit" id="btnDisable" disabled
+                    style="width:70%;background-color:#585898;padding:8px 2px;border-radius:5px">
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4 fst-normal fst-italic" style="color:white;font-size:14px">
+                        Create account
+                    </div>
+                    <div class="col-4" style="color:white;font-size:15px">
+                        &#8594
+                    </div>
+                </div>
+            </button>
+        </center>
+    </form>
+    <br>
+    <center>
+        <div style="font-size:13px;color:#c1c1c1">
+            already have an account? <a href="/login" target="_blank">Log in</a>
+        </div>
+    </center>
+</div>
+<script>
+   const btn = document.getElementById("password");
+   const confirm = document.getElementById("confirm");
+   const username = document.getElementById("username");
+   const email = document.getElementById("mail");
+   const phone = document.getElementById("phone");
+   username.addEventListener("keyup",colorChange);
+   phone.addEventListener("keyup",colorChange);
+   email.addEventListener("keyup",colorChange);
+   confirm.addEventListener("keyup",colorChange);
+   btn.addEventListener("keyup",colorChange);
+
+function colorChange()
+{
+ if (btn.value == confirm.value &&
+     confirm.value.length >7 &&
+     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value.trim())
+     && phone.value.length>9 && phone.value.length<13
+     && username.value.length>5)
+   {
+      document.getElementById('btnDisable').disabled = false;
+      document.getElementById('btnDisable').style.backgroundColor = "#090963";
+      console.log(document.getElementById('btnDisable').style.backgroundColor);
+   }
+   else
+   {
+      document.getElementById('btnDisable').disabled = true;
+      document.getElementById('btnDisable').style.backgroundColor = "#585898";
+      console.log(document.getElementById('btnDisable').style.backgroundColor);
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+{%endblock%}
+<!--090963-->
+
